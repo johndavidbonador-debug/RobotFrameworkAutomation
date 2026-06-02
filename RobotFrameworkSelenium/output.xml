@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.5 on win32)" generated="2026-05-29T03:24:11.317186" rpa="false" schemaversion="5">
+<suite id="s1" name="testDemo7" source="C:\Users\pc\PycharmProjects\RobotFrameworkSelenium\tests\testDemo7.robot">
+<test id="s1-t1" name="Play around the Dictionary" line="11">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-05-29T03:24:11.620287" level="INFO">&amp;{data} = { name=rahulshetty | course=robot | website=rahulshettyacademy.com }</msg>
+<var>&amp;{data}</var>
+<arg>name=rahulshetty</arg>
+<arg>course=robot</arg>
+<arg>website=rahulshettyacademy.com</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-05-29T03:24:11.619957" elapsed="0.000363"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-29T03:24:11.620657" level="INFO">{'name': 'rahulshetty', 'course': 'robot', 'website': 'rahulshettyacademy.com'}</msg>
+<arg>${data}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-29T03:24:11.620527" elapsed="0.000170"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${data}</arg>
+<arg>name</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-05-29T03:24:11.620867" elapsed="0.000128"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-29T03:24:11.621202" level="INFO">rahulshetty</msg>
+<arg>${data}[name]</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-29T03:24:11.621108" elapsed="0.000128"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-05-29T03:24:11.621461" level="INFO">${url} = rahulshettyacademy.com</msg>
+<var>${url}</var>
+<arg>${data}</arg>
+<arg>website</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-05-29T03:24:11.621340" elapsed="0.000141"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-05-29T03:24:11.621669" level="INFO">rahulshettyacademy.com</msg>
+<arg>${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-05-29T03:24:11.621589" elapsed="0.000112"/>
+</kw>
+<status status="PASS" start="2026-05-29T03:24:11.619273" elapsed="0.002556"/>
+</test>
+<test id="s1-t2" name="Add book into Library Database" line="20">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-05-29T03:24:11.623123" level="INFO">&amp;{data_2} = { build=0 | isbn=12354 | id=0 | manufacturer=CAT | model=BLK }</msg>
+<var>&amp;{data_2}</var>
+<arg>build=0</arg>
+<arg>isbn=12354</arg>
+<arg>id=0</arg>
+<arg>manufacturer=CAT</arg>
+<arg>model=BLK</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-05-29T03:24:11.622672" elapsed="0.000475"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2026-05-29T03:24:14.594269" level="INFO">POST Request : url=https://fake-json-api.mock.beeceptor.com/companies 
+ path_url=/companies 
+ headers={'User-Agent': 'python-requests/2.32.4', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '81', 'Content-Type': 'application/json'} 
+ body=b'{"build": "0", "isbn": "12354", "id": "0", "manufacturer": "CAT", "model": "BLK"}' 
+ </msg>
+<msg time="2026-05-29T03:24:14.594355" level="INFO">POST Response : url=https://fake-json-api.mock.beeceptor.com/companies 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000', 'Content-Length': '125', 'Content-Type': 'text/plain', 'Date': 'Thu, 28 May 2026 19:24:14 GMT', 'Vary': 'Accept-Encoding'} 
+ body=Hey ya! Great to see you here. Btw, nothing is configured for this request path. Create a rule and start building a mock API. 
+ </msg>
+<msg time="2026-05-29T03:24:14.594457" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${base_url}/companies</arg>
+<arg>json=${data_2}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2026-05-29T03:24:11.623317" elapsed="2.971161"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-05-29T03:24:14.594730" elapsed="0.000181"/>
+</kw>
+<status status="PASS" start="2026-05-29T03:24:11.622406" elapsed="2.972698"/>
+</test>
+<status status="PASS" start="2026-05-29T03:24:11.318217" elapsed="3.277619"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="testDemo7" id="s1" pass="2" fail="0" skip="0">testDemo7</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
